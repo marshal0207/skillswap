@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Swap Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-exchange-alt"></i>
+                <h1>SkillSwap</h1>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Navigation Menu -->
+            <nav class="nav-menu" id="navMenu">
+                <button class="nav-btn" onclick="showSection('home')" aria-label="Home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-btn" onclick="showSection('profile')" aria-label="My Profile">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </button>
+                <button class="nav-btn" onclick="showSection('browse')" aria-label="Browse Skills">
+                    <i class="fas fa-search"></i>
+                    <span>Browse</span>
+                </button>
+                <button class="nav-btn" onclick="showSection('swaps')" aria-label="Swap Requests">
+                    <i class="fas fa-handshake"></i>
+                    <span>Swaps</span>
+                </button>
+                <button class="nav-btn" onclick="showSection('admin')" aria-label="Admin Dashboard">
+                    <i class="fas fa-cog"></i>
+                    <span>Admin</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero">
+                    <h2>Welcome to SkillSwap Platform 👋</h2>
+                    <p class="hero-subtitle">Trade your talents, grow your skills, and connect with awesome people around you — all for free!</p>
+                </div>
+
+                <!-- Announcement Bar -->
+                <div id="announcementBar" class="announcement">
+                    <i class="fas fa-megaphone"></i>
+                    <span>No announcements yet</span>
+                </div>
+
+                <!-- Stats Dashboard -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="userCount">0</h3>
+                            <p>Active Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="swapCount">0</h3>
+                            <p>Swaps Completed</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="skillCount">0</h3>
+                            <p>Skills Available</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-grid">
+                        <div class="action-card" onclick="showSection('profile')" tabindex="0" role="button">
+                            <div class="action-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h4>Create Profile</h4>
+                            <p>Start by telling us what you can offer and what you want to learn.</p>
+                        </div>
+                        <div class="action-card" onclick="showSection('browse')" tabindex="0" role="button">
+                            <div class="action-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h4>Browse Skills</h4>
+                            <p>Discover amazing skills offered by our community members.</p>
+                        </div>
+                        <div class="action-card" onclick="showSection('swaps')" tabindex="0" role="button">
+                            <div class="action-icon">
+                                <i class="fas fa-inbox"></i>
+                            </div>
+                            <h4>My Swaps</h4>
+                            <p>View your current and pending swap requests.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Members -->
+                <div class="featured-section">
+                    <h3><i class="fas fa-star"></i> Featured Members</h3>
+                    <div id="featuredUsers" class="featured-grid"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h2><i class="fas fa-user"></i> My Profile</h2>
+                    <p>Create and manage your skill swap profile</p>
+                </div>
+
+                <div class="profile-form-container">
+                    <form id="profileForm" class="profile-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name">
+                                    <i class="fas fa-user"></i>
+                                    Full Name *
+                                </label>
+                                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Location
+                                </label>
+                                <input type="text" id="location" name="location" placeholder="City, Country">
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="photo">
+                                    <i class="fas fa-camera"></i>
+                                    Profile Photo URL
+                                </label>
+                                <input type="url" id="photo" name="photo" placeholder="https://example.com/your-photo.jpg">
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="skillsOffered">
+                                    <i class="fas fa-gift"></i>
+                                    Skills I Can Offer *
+                                </label>
+                                <input type="text" id="skillsOffered" name="skillsOffered" required 
+                                       placeholder="e.g., Photoshop, Cooking, Guitar, Programming">
+                                <small>Separate multiple skills with commas</small>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="skillsWanted">
+                                    <i class="fas fa-lightbulb"></i>
+                                    Skills I Want to Learn *
+                                </label>
+                                <input type="text" id="skillsWanted" name="skillsWanted" required 
+                                       placeholder="e.g., Excel, Spanish, Web Design, Photography">
+                                <small>Separate multiple skills with commas</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="availability">
+                                    <i class="fas fa-clock"></i>
+                                    Availability
+                                </label>
+                                <select id="availability" name="availability">
+                                    <option value="Weekends">Weekends</option>
+                                    <option value="Evenings">Evenings</option>
+                                    <option value="Flexible">Flexible</option>
+                                    <option value="Weekdays">Weekdays</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="isPublic" name="isPublic" checked>
+                                    <span class="checkmark"></span>
+                                    Make my profile public
+                                </label>
+                                <small>Allow other users to discover and contact you</small>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i>
+                            Save Profile
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Browse Section -->
+        <section id="browse" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h2><i class="fas fa-search"></i> Browse Skills</h2>
+                    <p>Discover amazing skills offered by our community</p>
+                </div>
+
+                <!-- Featured Profile -->
+                <div class="featured-profile">
+                    <div class="featured-badge">
+                        <i class="fas fa-star"></i>
+                        Featured Member
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h4>Priya S.</h4>
+                            <p><strong>Offers:</strong> Graphic Design, Photoshop, Canva</p>
+                            <p><strong>Wants:</strong> Data Analysis, SQL</p>
+                            <p><strong>Location:</strong> Bengaluru</p>
+                            <button class="btn-secondary" onclick="requestSwap('Priya S.')">
+                                <i class="fas fa-handshake"></i>
+                                Request Swap
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Popular Skills Tags -->
+                <div class="skills-tags">
+                    <h4>Popular Skills</h4>
+                    <div class="tags-container">
+                        <span class="skill-tag" onclick="filterSkill('Python')">
+                            <i class="fab fa-python"></i>
+                            Python
+                        </span>
+                        <span class="skill-tag" onclick="filterSkill('Cooking')">
+                            <i class="fas fa-utensils"></i>
+                            Cooking
+                        </span>
+                        <span class="skill-tag" onclick="filterSkill('Excel')">
+                            <i class="fas fa-file-excel"></i>
+                            Excel
+                        </span>
+                        <span class="skill-tag" onclick="filterSkill('Guitar')">
+                            <i class="fas fa-guitar"></i>
+                            Guitar
+                        </span>
+                        <span class="skill-tag" onclick="filterSkill('Photoshop')">
+                            <i class="fas fa-image"></i>
+                            Photoshop
+                        </span>
+                        <span class="skill-tag" onclick="filterSkill('Design')">
+                            <i class="fas fa-palette"></i>
+                            Design
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="browseSearch" placeholder="Search by skill, name, or location...">
+                    </div>
+                    <button class="btn-secondary" onclick="clearSearch()">
+                        <i class="fas fa-times"></i>
+                        Clear
+                    </button>
+                </div>
+
+                <!-- Results -->
+                <div id="browseList" class="browse-results"></div>
+
+                <!-- Tips Section -->
+                <div class="tips-section">
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h4>💡 Tip of the Day</h4>
+                            <p>Keep your profile public and detailed to get more swap requests. The more specific you are about your skills, the better your matches!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Swaps Section -->
+        <section id="swaps" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h2><i class="fas fa-handshake"></i> Swap Requests</h2>
+                    <p>Manage your incoming and outgoing swap requests</p>
+                </div>
+
+                <!-- Filters -->
+                <div class="swaps-filters">
+                    <div class="filter-group">
+                        <label for="swapStatusFilter">
+                            <i class="fas fa-filter"></i>
+                            Filter by Status
+                        </label>
+                        <select id="swapStatusFilter" onchange="filterSwaps()">
+                            <option value="all">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="accepted">Accepted</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="swapSearch">
+                            <i class="fas fa-search"></i>
+                            Search
+                        </label>
+                        <input type="text" id="swapSearch" placeholder="Search by name or skill..." oninput="filterSwaps()">
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="swap-tabs">
+                    <button class="tab-btn active" id="incomingTab" onclick="toggleSwapView('incoming')">
+                        <i class="fas fa-inbox"></i>
+                        Incoming Requests
+                        <span class="tab-count" id="incomingCount">0</span>
+                    </button>
+                    <button class="tab-btn" id="outgoingTab" onclick="toggleSwapView('outgoing')">
+                        <i class="fas fa-paper-plane"></i>
+                        Outgoing Requests
+                        <span class="tab-count" id="outgoingCount">0</span>
+                    </button>
+                </div>
+
+                <!-- Swap Lists -->
+                <div id="incomingSwaps" class="swap-list active"></div>
+                <div id="outgoingSwaps" class="swap-list"></div>
+            </div>
+        </section>
+
+        <!-- Admin Section -->
+        <section id="admin" class="section">
+            <div class="container">
+                <div class="page-header">
+                    <h2><i class="fas fa-shield-alt"></i> Admin Dashboard</h2>
+                    <p>Platform administration and moderation tools</p>
+                </div>
+
+                <div class="admin-login">
+                    <div class="login-form">
+                        <div class="form-group">
+                            <label for="adminPass">
+                                <i class="fas fa-lock"></i>
+                                Admin Password
+                            </label>
+                            <input type="password" id="adminPass" placeholder="Enter admin password">
+                        </div>
+                        <button class="btn-primary" onclick="enableAdmin()">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login to Admin Panel
+                        </button>
+                    </div>
+                </div>
+
+                <div id="adminPanel" class="admin-panel" style="display: none;">
+                    <div class="admin-actions">
+                        <h3>Admin Actions</h3>
+                        <div class="action-buttons">
+                            <button class="btn-secondary" onclick="downloadData()">
+                                <i class="fas fa-download"></i>
+                                Download Reports
+                            </button>
+                            <button class="btn-secondary" onclick="sendAnnouncement()">
+                                <i class="fas fa-megaphone"></i>
+                                Send Announcement
+                            </button>
+                            <button class="btn-secondary" onclick="showAdminData()">
+                                <i class="fas fa-refresh"></i>
+                                Refresh Data
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="adminOutput" class="admin-output"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>SkillSwap Platform</span>
+                </div>
+                <div class="footer-text">
+                    <p>&copy; 2025 Skill Swap Platform. Connecting talents worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f9f9f9;
+}
+
+header {
+  background-color: #1e90ff;
+  padding: 1rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav button {
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: white;
+  color: #1e90ff;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+main {
+  padding: 2rem;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+form label {
+  display: block;
+  margin: 1rem 0;
+}
+
+input, select, button {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.user-card {
+  background: #fff;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.feature {
+  flex: 1 1 300px;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.feature h3 {
+  margin-bottom: 0.5rem;
+}
+
+.cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.cta button {
+  background-color: #1e90ff;
+  color: white;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.cta button:hover {
+  background-color: #0d74d1;
+}
+/* Announcement */
+.announcement {
+  background: #fff3cd;
+  color: #856404;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+/* Stats Section */
+.stats {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+  justify-content: center;
+}
+
+.stat-card {
+  background: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+  color: #1e90ff;
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* Action Cards */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  justify-content: center;
+}
+
+.action-card {
+  flex: 1 1 280px;
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.action-card:hover {
+  transform: scale(1.03);
+}
+.swap-tabs {
+  margin-bottom: 1rem;
+}
+.swap-tabs button {
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+}
+.swap-tabs button.active {
+  background: #d1e7dd;
+  font-weight: bold;
+}
+.swap-list {
+  margin-top: 1rem;
+}
+.swap-card {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.swap-status {
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.9em;
+  margin-right: 1rem;
+}
+.swap-status.pending { background: #fff3cd; color: #856404; }
+.swap-status.accepted { background: #d1e7dd; color: #0f5132; }
+.swap-status.declined { background: #f8d7da; color: #842029; }
+.swap-actions button {
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.swap-actions .accept { background: #198754; color: #fff; }
+.swap-actions .decline { background: #dc3545; color: #fff; }
+
+.swap-tabs {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.swap-tabs button {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  margin: 0 0.5rem;
+  background: #eee;
+  border-radius: 5px 5px 0 0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.swap-tabs button.active {
+  background: #1e90ff;
+  color: white;
+}
+
+.swap-list {
+  display: none;
+}
+
+.swap-list.active {
+  display: block;
+}
+
+.empty-message {
+  padding: 2rem;
+  text-align: center;
+  color: #888;
+}
+.swap-filter-bar {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.swap-filter-bar input, .swap-filter-bar select {
+  padding: 0.5rem;
+  min-width: 200px;
+}
+
+.swap-tabs {
+  display: flex;
+  margin: 1rem 0;
+}
+
+.swap-tabs button {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  border-radius: 5px 5px 0 0;
+}
+
+.swap-tabs button.active {
+  background-color: #1e90ff;
+  color: white;
+  font-weight: bold;
+}
+
+.swap-list {
+  display: none;
+}
+
+.swap-list.active {
+  display: block;
+}
+
+.swap-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.swap-card p {
+  margin: 0.3rem 0;
+}
+
+.swap-status {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.3rem;
+}
+
+.swap-status.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.swap-status.accepted {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.swap-status.rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.swap-actions button {
+  margin-top: 0.5rem;
+  margin-left: 0.3rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.swap-actions .accept {
+  background-color: #28a745;
+  color: white;
+}
+
+.swap-actions .decline {
+  background-color: #dc3545;
+  color: white;
+}
+
+.swap-actions .feedback {
+  background-color: #007bff;
+  color: white;
+}
+
+.swap-actions .cancel {
+  background-color: #6c757d;
+  color: white;
+}
+.swap-card p { margin: 0.2rem 0; }
+.swap-actions { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem; }
+.rating { font-size:1.2rem; color:gold; margin-top:0.3rem; }
+
+
